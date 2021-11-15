@@ -5,6 +5,7 @@ $( document ).ready(function() {
   var a= moment().format('dddd MMMM Do YYYY, h:mm');
     $("#display-date").text(a)
     var row = ""
+    
     //loop to dispaly 9am-18pm
       for (var i= 9 ; i<=18; i++){
         // Creation of the row elements
@@ -18,12 +19,14 @@ $( document ).ready(function() {
         $("#display-planner").append(row)
         getlocalStorage(i)
       }
+
      $("button.btn.btn-success").click(function(e){
      var id = $(this).data("id")
      var inputText = $(this).parent().siblings().find("input").val()
      localStorage.setItem(id,inputText)
      })
-    //  Convert Am to Pm
+    
+     //  Convert Am to Pm
      function displayAmorPm(hour){
        var b=""
        if(hour<=12){
@@ -45,6 +48,7 @@ $( document ).ready(function() {
         console.log(text)
        }
      }
+     
      //Apdate color
      function updateColor(){
        var hour = new Date().getHours();
@@ -59,6 +63,7 @@ $( document ).ready(function() {
          }
        }
      }
+     
      setInterval(function(){
        updateColor()
      },1000)
